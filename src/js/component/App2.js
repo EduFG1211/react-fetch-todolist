@@ -3,14 +3,23 @@ import { Button } from "bootstrap";
 //import PropTypes from "prop-types";
 // la app usa enter para ingresar cada tarea
 //create your first component
-export function App() {
+export function App2() {
 	//export const App = () => {
 	const [list, setlist] = useState([]);
 
-	function myFunction(e) {
+	function addItem(e) {
 		if (e.key === "Enter" && e.target.value !== "") {
-			setlist([...list, e.target.value]);
+			setlist(list.concat(e.target.value));
+			//console.log(list);
+			//console.log(e.target.value);
 			e.target.value = "";
+		}
+	}
+	function delList(index) {
+		if (index > -1) {
+			const filterData = list.filter(item => item !== list[index]);
+			setlist(filterData);
+			//console.log(list);
 		}
 	}
 	useEffect(() => {
@@ -53,7 +62,7 @@ export function App() {
 			<input
 				type="text"
 				placeholder="What needs to be done?"
-				onKeyDown={event => myFunction(event)}
+				onKeyDown={event => addItem(event)}
 				className="m-2"
 			/>
 			<ul className="list-group list-group-flush">
@@ -65,7 +74,7 @@ export function App() {
 							{item} {index}
 							<button
 								className="btn btn-danger m-3"
-								onClick={() => DeleteItems(index)}>
+								onClick={() => delList(index)}>
 								X
 							</button>
 						</li>
