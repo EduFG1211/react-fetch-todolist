@@ -1,103 +1,19 @@
-//@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
 
-div {
-  margin: 0;
-  min-width: 250px;
-  font-family: 'Redressed', cursive;
-}
-
-/* Include the padding and border in an element's total width and height */
-* {
-  box-sizing: border-box;
-}
-
-/* Style the header */
-.header {
-  background-color: #2794be;
-  padding: 30px 40px;
-  color: white;
-  text-align: center;
-}
-
-/* Clear floats after the header */
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* Style the input */
-input {
-    padding: 12px 8px 12px 40px;
-  border: none;
-  border-radius: 0;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 20px;
-  font-family: 'Redressed', cursive;
-}
-
-/* Style the "Add" button */
-.addBtn {
-  padding: 10px;
-  width: 25%;
-  background: #d9d9d9;
-  color: #555;
-  float: left;
-  text-align: center;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 0;
-  font-family: 'Redressed', cursive;
-}
-
-.addBtn:hover {
-  background-color: #bbb;
-}
-
-/* Remove margins and padding from the list */
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style the list items */
-ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: none;
-  background: #eee;
-  font-size: 18px;
-  transition: 0.2s;
-  
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-/* Darker background-color on hover */
-ul li:hover {
-  background: #ddd;
-}
-
-.delBtn {
-    background-color: #2794be;
-    color: white;
-    float: right;
-    border: none;
+#main{
+    width: 600px;
+    margin-left: 200px;
+    margin-top: 50px;
+    background-image: url("https://img.freepik.com/foto-gratis/fondo-papel-blanco-arte_35956-2379.jpg?size=626&ext=jpg");
+    background-repeat: repeat-y;
+    padding-left: 20px;
     text-align: center;
-    font-size: 16px;
-    border-radius: 100%;
+    
+   
 }
 
-
+#espacio{
+    width: 20px;
+    height: 20px;
+}
