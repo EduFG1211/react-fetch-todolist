@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
 
 #main{
-    width: 600px;
-    margin-left: 200px;
-    margin-top: 50px;
-    background-image: url("https://img.freepik.com/foto-gratis/fondo-papel-blanco-arte_35956-2379.jpg?size=626&ext=jpg");
-    background-repeat: repeat-y;
-    padding-left: 20px;
-    text-align: center;
+    width: 950px;
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190622/ourmid/pngtree-minimalist-gradient-note-background-image_227353.jpg");
+    //background-repeat: repeat-y;
+    padding-top: 200px;
+    padding-left: 200px;
+    // text-align: center;
+    object-fit: none;
     
    
 }
@@ -16,4 +16,10 @@
 #espacio{
     width: 20px;
     height: 20px;
+}
+
+.positionIcons {
+    color: red;
+    float: right;
+    padding-right: 500px;    
 }

@@ -13,4 +13,3 @@ import { App3 } from "./component/App3.js";
 
 //render your react application
 ReactDOM.render(<App3 />, document.querySelector("#app"));
-
