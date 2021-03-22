@@ -6,9 +6,9 @@ import { Button } from "bootstrap";
 export function App3() {
 	//export const App = () => {
 	const [list, setlist] = useState([
-		{ label: "Make the bed", done: false },
-		{ label: "Walk the dog", done: false },
-		{ label: "Do the replits", done: false }
+		// { label: "Make the bed", done: false },
+		// { label: "Walk the dog", done: false },
+		// { label: "Do the replits", done: false }
 	]);
 
 	//GET LIST OF TODO'S FOR A PARTICULAR USER
