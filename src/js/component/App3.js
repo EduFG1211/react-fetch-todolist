@@ -5,104 +5,66 @@ import { Button } from "bootstrap";
 //create your first component
 export function App3() {
 	//export const App = () => {
-	const [list, setlist] = useState([
-		// { label: "Make the bed", done: false },
-		// { label: "Walk the dog", done: false },
-		// { label: "Do the replits", done: false }
-	]);
+	const [list, setlist] = useState([]);
 
-	//GET LIST OF TODO'S FOR A PARTICULAR USER
-	function getToDo() {
-		const additionalSetting = {
-			headers: {
-				"Content-Type": "application/json"
-			},
-			method: "GET"
-		};
-		fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
-			additionalSetting
-		)
+	useEffect(() => {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/EduFG1211")
 			.then(response => response.json())
 			.then(newResponse => {
-				console.log(newResponse);
-				//setlist([...list, ...newResponse]);
+				//console.log(newResponse);
 				setlist(newResponse);
 			})
 			.catch(error => console.log(error));
-	}
-
-	//UPDATE EXAMPLE
-	function updateToDo() {
-		const tasks = [
-			{ label: "Make the bed", done: false },
-			{ label: "Walk the dog", done: false },
-			{ label: "Do the replits", done: false }
-		];
-		console.log(tasks);
-		const additionalSetting = {
-			headers: {
-				"Content-Type": "application/json"
-			},
-			method: "PUT",
-			body: JSON.stringify(tasks)
-		};
-		fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
-			additionalSetting
-		);
-	}
-
-	//CREATET A NEW TODO LIST OF A PARTICULAR USER
-	useEffect(() => {
-		async function createToDo() {
-			fetch(
-				"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
-				{
-					headers: {
-						"Content-Type": "application/json"
-					},
-					method: "POST",
-					body: "[]"
-				}
-			)
-				.then(response => response.json())
-				.then(newResponse => {
-					console.log(newResponse);
-					setlist(JSON.parse(newResponse));
-				})
-				.catch(error => console.log(error));
-		}
-		createToDo();
-		getToDo();
-		//updateToDo();
 	}, []);
 
+	useEffect(() => {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/EduFG1211", {
+			method: "PUT",
+			body: JSON.stringify(list),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
+	}, [list]);
+
+	const delUser = async () => {
+		await fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
+			{
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json"
+				}
+			}
+		);
+		await fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify([])
+			}
+		);
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/EduFG1211")
+			.then(response => response.json())
+			.then(newResponse => {
+				//console.log(newResponse);
+				setlist(newResponse);
+			})
+			.catch(error => console.log(error));
+	};
+
+	//ADD ITEM ON LIST
 	function addItem(e) {
 		if (e.key === "Enter" && e.target.value !== "") {
-			setlist(list.concat({ label: e.target.value, done: false }));
+			//setlist(list.concat({ label: e.target.value, done: false }));
+			setlist([...list, { label: e.target.value, done: false }]);
 			console.log(list);
 			console.log(e.target.value);
 			e.target.value = "";
-			methodUpdate(list);
 		}
-	}
-
-	//UPDATE THE ENTIRE LIST OF TODO'S OF A PARTICULAR USER AND SAVE IT
-	function methodUpdate(list) {
-		const tasks = list;
-		console.log(tasks);
-		const additionalSetting = {
-			headers: {
-				"Content-Type": "application/json"
-			},
-			method: "PUT",
-			body: JSON.stringify(tasks)
-		};
-		fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
-			additionalSetting
-		);
 	}
 
 	//DELETE ITEM ON LIST
@@ -111,28 +73,7 @@ export function App3() {
 			const filterData = list.filter(item => item !== list[index]);
 			setlist(filterData);
 			console.log(list);
-			methodUpdate(list);
 		}
-	}
-
-	//DELETE USER AND ALL OF THEIR TODO'S
-	function delUser() {
-		const additionalSetting = {
-			headers: {
-				"Content-Type": "application/json"
-			},
-			method: "DELETE"
-		};
-		fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/EduFG1211",
-			additionalSetting
-		)
-			.then(response => response.json())
-			.then(newResponse => {
-				console.log(newResponse);
-				setlist(newResponse);
-			})
-			.catch(error => console.log(error));
 	}
 
 	return (
